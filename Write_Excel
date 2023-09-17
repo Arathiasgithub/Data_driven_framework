@@ -1,0 +1,44 @@
+package excel;
+
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+
+import org.apache.poi.sl.usermodel.Sheet;
+import org.apache.poi.xssf.usermodel.XSSFCell;
+import org.apache.poi.xssf.usermodel.XSSFRow;
+import org.apache.poi.xssf.usermodel.XSSFSheet;
+import org.apache.poi.xssf.usermodel.XSSFWorkbook;
+
+public class Write_excel {
+
+	
+
+		
+
+			public static void main(String[] args) throws Exception {
+				String path= "D:\\Selenium\\excel\\Book1.xlsx";
+				FileInputStream fs=new FileInputStream(path);// read
+				XSSFWorkbook wb = new XSSFWorkbook(fs);
+				XSSFSheet sheet1 = wb.getSheetAt(0);
+				int lastRow = sheet1.getLastRowNum();
+				
+			//	for(int i=0; i<=lastRow; i++){
+					XSSFRow row = sheet1.getRow(0);
+					XSSFCell cell = row.createCell(5);
+		          
+					cell.setCellValue("WriteintoExcel12");
+					
+
+			//}		
+			fs.close();
+				FileOutputStream fos = new FileOutputStream(path);//write 
+				wb.write(fos);
+				fos.close();
+
+			}
+
+		
+
+	
+
+}
